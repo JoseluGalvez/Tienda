@@ -14,7 +14,7 @@ public class UpdateProductoAction extends Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String jsp ="/principal.jsp";
+		String jsp ="/secured/principal.jsp";
 		System.out.println("Acción modificar UpdateProductoAction...");
 		
 		String idProducto = request.getParameter("idProducto");

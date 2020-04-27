@@ -58,9 +58,9 @@ public class Control extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-		String jsp = "/principal.jsp"; //página de inicio tras loguearse
+		String jsp = "/secured/principal.jsp"; //página de inicio tras loguearse
 		//Comprobamos si existe usuario "Logueado"
-		Usuario usuario = (Usuario)request.getSession().getAttribute("USUARIO_LOGED");
+		Usuario usuario = (Usuario)request.getSession().getAttribute("USER_LOGGED");
 		
 		if (usuario != null) {
 			//Cogemos el parámetro que llega para identificar la acción a realizar

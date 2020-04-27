@@ -16,7 +16,7 @@ public class AddProductoAction extends Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String jsp ="/principal.jsp";
+		String jsp ="/secured/principal.jsp";
 		System.out.println("Acción añadir AddProductoAction...");
 		
 		String idProducto = request.getParameter("idProducto");
@@ -35,10 +35,16 @@ public class AddProductoAction extends Action {
 			request.getServletContext().setAttribute("ATR_PRODUCTOS", productos);
 		}
 		
+		// Comprobamos si existe ese ID
+	    if(productos.containsKey(idProducto)) {
+	    	System.out.println("Producto ["+idProducto+"] ya existe.");
+			//request.setAttribute("MSG", "Producto en uso, escriba otro diferente.");
+	    }else {
 		// Añado a la lista el producto creado con los parámetros recibidos (atributos)
 		productos.put(idProducto, producto);
 		
 		System.out.println("Producto ["+idProducto+"] añadido.");
+	    }
 		
 		return jsp;
 	}

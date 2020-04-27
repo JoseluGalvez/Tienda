@@ -11,8 +11,6 @@
 </head>
 <body>
 
-
-
 <form action="<%=request.getContextPath()%>/Control" method="POST">
 <!-- hidden para que no se vea el campo que contiene la acción -->
 	<input type="hidden" name="ACTION_ID" value="ADDPRODUCTO"/>
@@ -23,10 +21,9 @@
 		<input type="text" name="idProducto" id="idProducto" required/>
 		</p>
 		<p>
-		<label for="nombreProducto">Nombre: </label>
+		<label for="nombreProducto">Nombre del producto: </label>
 		<input type="text" name="nombreProducto" id="nombreProducto" required/>
 		</p>
-		
 	</fieldset>
 		<p>
 		<input type="submit" value="+ AÑADIR">
@@ -53,7 +50,7 @@
 			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/Control?ACTION_ID=DELETEPRODUCTO&idProducto="+ producto.getIdProducto()+"\">X </a></td>"
 			+"<td align=\"CENTER\"> "+producto.getIdProducto()+" </td>"
 			+"<td align=\"CENTER\"> "+producto.getNombreProducto()+" </td>"
-			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/updateProducto.jsp?nombreProducto="+producto.getNombreProducto()+"&idProducto="+producto.getIdProducto()+"\"> >> </a></td>"
+			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/secured/updateProducto.jsp?nombreProducto="+producto.getNombreProducto()+"&idProducto="+producto.getIdProducto()+"\"> >> </a></td>"
 			+"</tr>");	
 		}
 		out.println("</table>");
