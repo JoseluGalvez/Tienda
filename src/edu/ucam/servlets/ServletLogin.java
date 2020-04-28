@@ -62,7 +62,7 @@ public class ServletLogin extends HttpServlet {
 			//Creamos el primer usuario Administrador para poder acceder
 					String idUsu = "admin";
 
-					Usuario admin = new Usuario (idUsu, "José Luis", "Gálvez", "admin");
+					Usuario admin = new Usuario (idUsu, "José Luis", "Gálvez", "admin", true);
 					Hashtable<String, Usuario> usuarios = new Hashtable<String, Usuario>();
 					
 				// Lista de usuarios iniciales

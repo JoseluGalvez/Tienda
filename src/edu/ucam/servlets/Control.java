@@ -14,8 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.ucam.actions.Action;
 import edu.ucam.actions.AddProductoAction;
+import edu.ucam.actions.AddUsuarioAction;
 import edu.ucam.actions.DeleteProductoAction;
+import edu.ucam.actions.DeleteUsuarioAction;
 import edu.ucam.actions.UpdateProductoAction;
+import edu.ucam.actions.UpdateUsuarioAction;
 import edu.ucam.beans.Usuario;
 
 /**
@@ -49,6 +52,9 @@ public class Control extends HttpServlet {
 					actions.put("ADDPRODUCTO", new AddProductoAction());
 					actions.put("DELETEPRODUCTO", new DeleteProductoAction());
 					actions.put("UPDATEPRODUCTO", new UpdateProductoAction());
+					actions.put("ADDUSUARIO", new AddUsuarioAction());
+					actions.put("DELETEUSUARIO", new DeleteUsuarioAction());
+					actions.put("UPDATEUSUARIO", new UpdateUsuarioAction());
 				}
 	}
 

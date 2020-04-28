@@ -19,8 +19,9 @@ public class AddProductoAction extends Action {
 		String jsp ="/secured/principal.jsp";
 		System.out.println("Acción añadir AddProductoAction...");
 		
-		String idProducto = request.getParameter("idProducto");
-		String nombreProducto = request.getParameter("nombreProducto");
+		//Compruebo que los campos no tengan NULL
+		String idProducto = (request.getParameter("idProducto")==null)?"":(request.getParameter("idProducto"));
+		String nombreProducto = (request.getParameter("nombreProducto")==null)?"":(request.getParameter("nombreProducto"));
 		
 		Producto producto = new Producto(idProducto, nombreProducto, null, 0);
 		
@@ -38,7 +39,6 @@ public class AddProductoAction extends Action {
 		// Comprobamos si existe ese ID
 	    if(productos.containsKey(idProducto)) {
 	    	System.out.println("Producto ["+idProducto+"] ya existe.");
-			//request.setAttribute("MSG", "Producto en uso, escriba otro diferente.");
 	    }else {
 		// Añado a la lista el producto creado con los parámetros recibidos (atributos)
 		productos.put(idProducto, producto);

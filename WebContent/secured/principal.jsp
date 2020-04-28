@@ -29,9 +29,13 @@
 		<input type="submit" value="+ AÑADIR">
 		</p>
 	</form>
-	<br><br>
+
+	
+	
 
 <%
+out.println("<a href=\""+request.getContextPath()+"/secured/usuarios.jsp\"> USUARIOS </a>");
+out.println("<br><br>");
 //Recuperamos del contexto todos los productos
 	Hashtable <String, Producto> productos = (Hashtable <String, Producto>)request.getServletContext().getAttribute("ATR_PRODUCTOS");
 

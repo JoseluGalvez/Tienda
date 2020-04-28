@@ -17,9 +17,10 @@ public class UpdateProductoAction extends Action {
 		String jsp ="/secured/principal.jsp";
 		System.out.println("Acción modificar UpdateProductoAction...");
 		
-		String idProducto = request.getParameter("idProducto");
-		String nombreProducto = request.getParameter("nombreProducto");
-		
+		//Compruebo que los campos no tengan NULL
+		String idProducto = (request.getParameter("idProducto")==null)?"":(request.getParameter("idProducto"));
+		String nombreProducto = (request.getParameter("nombreProducto")==null)?"":(request.getParameter("nombreProducto"));
+				
 		Producto producto = new Producto(idProducto, nombreProducto, null, 0);
 		
 		//Declaro la lista de productos con su "casting" correspondiente.

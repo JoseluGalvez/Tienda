@@ -38,7 +38,7 @@
 	</p>
 	</form><br><br>
 <% //VOLVER
-out.println("<a href=\"" +request.getContextPath()+ "/principal.jsp \"><button>< VOLVER</button></a>");
+out.println("<a href=\"" +request.getContextPath()+ "/secured/principal.jsp \"><button>< VOLVER</button></a>");
 }%>
 
 </body>
