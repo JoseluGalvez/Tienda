@@ -14,8 +14,8 @@ public class UpdateProductoAction extends Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String jsp ="/secured/principal.jsp";
-		System.out.println("Acción modificar UpdateProductoAction...");
+		String jsp ="/secured/productos.jsp";
+		//System.out.println("Acción modificar UpdateProductoAction...");
 		
 		//Compruebo que los campos no tengan NULL
 		String idProducto = (request.getParameter("idProducto")==null)?"":(request.getParameter("idProducto"));
@@ -30,14 +30,12 @@ public class UpdateProductoAction extends Action {
 		if (productos == null) {
 			
 			productos = new Hashtable<String, Producto>();
-			
 			request.getServletContext().setAttribute("ATR_PRODUCTOS", productos);
 		}
-		
 		// Añado a la lista el producto modificado con los parámetros recibidos (atributos)
 				productos.put(idProducto, producto);
-				System.out.println("Producto ["+idProducto+"] modificado.");
+				//System.out.println("Producto ["+idProducto+"] modificado.");
+				request.setAttribute("MSG", "Producto ["+idProducto+"] modificado.");
 		return jsp;
 	}
-
 }

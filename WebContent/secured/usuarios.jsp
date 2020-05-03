@@ -10,7 +10,20 @@
 <title>LISTA USUARIOS</title>
 </head>
 <body>
-
+<%
+	//Intentamos recuperar el usuario que ha iniciado sesión.
+	Usuario user = (Usuario) session.getAttribute("USER_LOGGED");
+	if (user!=null){
+	out.println("<h5 align=\"RIGHT\">Conectado como:  "+user.getIdUsu()+" <a href=\""+request.getContextPath()+"/Control?ACTION_ID=EXIT\"> Salir</a></h5><hr>");
+	}
+	//Si recibimos un mensaje lo ponemos encima del formulario.
+	if (request.getAttribute("MSG")!=null){
+		out.println(request.getAttribute("MSG")+"<br>");
+	}else {
+		out.println("<br>"); 	// Salto de línea para que no haya desplazamiento brusco hacia abajo 
+								// cuando haya mensaje
+	}
+%>
 	<form action="<%=request.getContextPath()%>/Control" method="POST">
 <!-- hidden para que no se vea el campo que contiene la acción -->
 	<input type="hidden" name="ACTION_ID" value="ADDUSUARIO"/>
@@ -42,7 +55,6 @@
 		<input type="submit" value="+ ANNADIR">
 		</p>
 	</form>
-	<br><br>
 
 <%
 //Recuperamos del contexto todos los usuarios

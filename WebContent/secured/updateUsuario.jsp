@@ -62,8 +62,8 @@
 	<p>
 	<input type="submit" value="~ MODIFICAR">
 	</p>
-	</form><br>
-	<br>
+	</form>
+	
 <%} 
 	//VOLVER
 out.println("<a href=\"" +request.getContextPath()+ "/secured/usuarios.jsp \"><button>< VOLVER</button></a>");

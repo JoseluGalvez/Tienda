@@ -16,8 +16,8 @@ public class AddProductoAction extends Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String jsp ="/secured/principal.jsp";
-		System.out.println("Acción añadir AddProductoAction...");
+		String jsp ="/secured/productos.jsp";
+		//System.out.println("Acción añadir AddProductoAction...");
 		
 		//Compruebo que los campos no tengan NULL
 		String idProducto = (request.getParameter("idProducto")==null)?"":(request.getParameter("idProducto"));
@@ -38,12 +38,13 @@ public class AddProductoAction extends Action {
 		
 		// Comprobamos si existe ese ID
 	    if(productos.containsKey(idProducto)) {
-	    	System.out.println("Producto ["+idProducto+"] ya existe.");
+	    	//System.out.println("Producto ["+idProducto+"] ya existe.");
+	    	request.setAttribute("MSG", "Producto ["+idProducto+"] ya existe, escriba otro diferente.");
 	    }else {
 		// Añado a la lista el producto creado con los parámetros recibidos (atributos)
 		productos.put(idProducto, producto);
-		
-		System.out.println("Producto ["+idProducto+"] añadido.");
+		//System.out.println("Producto ["+idProducto+"] añadido.");
+		request.setAttribute("MSG", "Producto ["+idProducto+"] añadido.");
 	    }
 		
 		return jsp;

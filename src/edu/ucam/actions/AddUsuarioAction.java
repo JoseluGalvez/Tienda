@@ -15,7 +15,7 @@ public class AddUsuarioAction extends Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String jsp ="/secured/usuarios.jsp";
-		System.out.println("Entro en AddUsuarioAction...");
+		//System.out.println("Entro en AddUsuarioAction...");
 		
 		//Comprobamos que los campos no tengan valor null
 		String idUsu = (request.getParameter("nombre")==null)?"":(request.getParameter("nombre"));
@@ -38,11 +38,13 @@ public class AddUsuarioAction extends Action {
 		
 		// Comprobamos si existe ese ID
 	    if(usuarios.containsKey(idUsu)) {
-	    	System.out.println("Nick en uso, escriba otro diferente.");
+	    	//System.out.println("Nick en uso, escriba otro diferente.");
+	    	request.setAttribute("MSG", "Nick en uso, escriba otro diferente.");
 	    }else {
 			// Añado a la lista el usuario creado con los parámetros recibidos (atributos)
 			usuarios.put(idUsu, usuario);
-			System.out.println("Usuario ["+idUsu+"] añadido.");
+			//System.out.println("Usuario ["+idUsu+"] añadido.");
+			request.setAttribute("MSG", "Usuario ["+idUsu+"] añadido.");
 	    }
 		return jsp;
 	}

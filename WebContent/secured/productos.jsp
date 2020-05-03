@@ -3,6 +3,7 @@
 <%@ page import="java.util.Enumeration"%>
 <%@ page import="java.util.Hashtable"%>
 <%@ page import="edu.ucam.beans.Producto"%>
+<%@ page import="edu.ucam.beans.Usuario"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +11,20 @@
 <title>PRODUCTOS</title>
 </head>
 <body>
-
+<%
+	//Intentamos recuperar el usuario que ha iniciado sesión.
+	Usuario user = (Usuario) session.getAttribute("USER_LOGGED");
+	if (user!=null){
+	out.println("<h5 align=\"RIGHT\">Conectado como:  "+user.getIdUsu()+" <a href=\""+request.getContextPath()+"/Control?ACTION_ID=EXIT\"> Salir</a></h5><hr>");
+	}
+	//Si recibimos un mensaje lo ponemos encima del formulario.
+	if (request.getAttribute("MSG")!=null){
+		out.println(request.getAttribute("MSG")+"<br>");
+	}else {
+		out.println("<br>"); 	// Salto de línea para que no haya desplazamiento brusco hacia abajo 
+								// cuando haya mensaje
+	}
+%>
 <form action="<%=request.getContextPath()%>/Control" method="POST">
 <!-- hidden para que no se vea el campo que contiene la acción -->
 	<input type="hidden" name="ACTION_ID" value="ADDPRODUCTO"/>
@@ -34,8 +48,7 @@
 	
 
 <%
-out.println("<a href=\""+request.getContextPath()+"/secured/usuarios.jsp\"> USUARIOS </a>");
-out.println("<br><br>");
+//out.println("<br>");
 //Recuperamos del contexto todos los productos
 	Hashtable <String, Producto> productos = (Hashtable <String, Producto>)request.getServletContext().getAttribute("ATR_PRODUCTOS");
 
@@ -66,7 +79,5 @@ out.println("<br><br>");
 <%
 	out.println("<a href=\"" +request.getContextPath()+ "/secured/inicio.jsp \"> <button>< VOLVER</button></a>");
 %>
-
-
 </body>
 </html>

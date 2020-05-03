@@ -36,9 +36,9 @@
 	<p>
 	<input type="submit" value="~ MODIFICAR">
 	</p>
-	</form><br><br>
+	</form>
 <% //VOLVER
-out.println("<a href=\"" +request.getContextPath()+ "/secured/principal.jsp \"><button>< VOLVER</button></a>");
+out.println("<a href=\"" +request.getContextPath()+ "/secured/productos.jsp \"><button>< VOLVER</button></a>");
 }%>
 
 </body>

@@ -26,7 +26,7 @@ Bienvenido, <%= user.getIdUsu() %>!<br><br>
 <% if (user.isAdmin()){ %>
 Gestionar <a href="<%=request.getContextPath()%>/secured/usuarios.jsp">  USUARIOS</a><br><br>
 <%} %>
-Gestionar <a href="<%=request.getContextPath()%>/secured/principal.jsp">  PRODUCTOS</a><br><br>
+Gestionar <a href="<%=request.getContextPath()%>/secured/productos.jsp">  PRODUCTOS</a><br><br>
 		
 </body>
 </html>

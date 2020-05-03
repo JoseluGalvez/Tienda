@@ -15,8 +15,7 @@ public class UpdateUsuarioAction extends Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String jsp = "/secured/usuarios.jsp";
-		
-		System.out.println("Entro en UpdateUsuarioAction...");
+		//System.out.println("Entro en UpdateUsuarioAction...");
 		
 		//Comprobamos que los campos no tengan valor null
 		String idUsu = (request.getParameter("nombre")==null)?"":(request.getParameter("nombre"));
@@ -40,7 +39,8 @@ public class UpdateUsuarioAction extends Action {
 		
 		// Añado a la lista el usuario creado con los parámetros recibidos (atributos)
 		usuarios.put(idUsu, usuario);
-		System.out.println("Usuario ["+idUsu+"] modificado.");
+		//System.out.println("Usuario ["+idUsu+"] modificado.");
+		request.setAttribute("MSG", "Usuario ["+idUsu+"] modificado.");
 		return jsp;
 	}
 
