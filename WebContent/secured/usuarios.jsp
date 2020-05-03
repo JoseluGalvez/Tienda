@@ -74,8 +74,10 @@
 	}else{
 		out.println("   - = No hay usuarios. = -");
 	}
-
-out.println("<a href=\"" +request.getContextPath()+ "/secured/principal.jsp \"> <button>< VOLVER</button></a>");
+%>
+<br> 
+<%
+out.println("<a href=\"" +request.getContextPath()+ "/secured/inicio.jsp \"> <button>< VOLVER</button></a>");
 %>
 
 </body>

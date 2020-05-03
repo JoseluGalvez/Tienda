@@ -2,11 +2,11 @@ package edu.ucam.beans;
 
 public class Usuario {
 	
-	private String idUsu;
-	private String name;
-	private String surname;
-	private String pass;
-	boolean admin;
+	private String idUsu;	// ID del usuario
+	private String name;	// Nombre del usuario
+	private String surname;	// Apellido del usuario
+	private String pass;	// Contrasenna del usuario
+	boolean admin;			// Rol de usuario (normal || administrador)
 	
 	public Usuario(String idUsu, String name, String surname, String pass, boolean admin) {
 		super();

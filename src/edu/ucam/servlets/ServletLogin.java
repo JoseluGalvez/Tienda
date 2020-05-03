@@ -41,7 +41,7 @@ public class ServletLogin extends HttpServlet {
 					    		// Usuario y pass correctos
 					    		Usuario user = usuarios.get(idUsu);
 					    		request.getSession().setAttribute(USER_LOGGED, user);
-					    		jsp = "/secured/principal.jsp"; //jsp de respuesta Logueado
+					    		jsp = "/secured/inicio.jsp"; //jsp de respuesta Logueado
 					    	}else {
 					    		System.out.println("Contraseña del usuario <"+idUsu+"> incorrecta");
 					    	}
@@ -62,7 +62,7 @@ public class ServletLogin extends HttpServlet {
 			//Creamos el primer usuario Administrador para poder acceder
 					String idUsu = "admin";
 
-					Usuario admin = new Usuario (idUsu, "José Luis", "Gálvez", "admin", true);
+					Usuario admin = new Usuario (idUsu, "Jose Luis", "Gálvez", "admin", true);
 					Hashtable<String, Usuario> usuarios = new Hashtable<String, Usuario>();
 					
 				// Lista de usuarios iniciales

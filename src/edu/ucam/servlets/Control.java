@@ -17,6 +17,7 @@ import edu.ucam.actions.AddProductoAction;
 import edu.ucam.actions.AddUsuarioAction;
 import edu.ucam.actions.DeleteProductoAction;
 import edu.ucam.actions.DeleteUsuarioAction;
+import edu.ucam.actions.LogoutAction;
 import edu.ucam.actions.UpdateProductoAction;
 import edu.ucam.actions.UpdateUsuarioAction;
 import edu.ucam.beans.Usuario;
@@ -55,12 +56,11 @@ public class Control extends HttpServlet {
 					actions.put("ADDUSUARIO", new AddUsuarioAction());
 					actions.put("DELETEUSUARIO", new DeleteUsuarioAction());
 					actions.put("UPDATEUSUARIO", new UpdateUsuarioAction());
+					actions.put("EXIT", new LogoutAction());
 				}
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
@@ -84,15 +84,7 @@ public class Control extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
-	/* (non-Javadoc)
-	 * @see javax.servlet.GenericServlet#init()
-	 */
 }

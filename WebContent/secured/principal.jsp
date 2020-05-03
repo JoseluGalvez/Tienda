@@ -62,6 +62,10 @@ out.println("<br><br>");
 		out.println("   - = No hay productos. = -");
 	}
 %>
+	<br> 
+<%
+	out.println("<a href=\"" +request.getContextPath()+ "/secured/inicio.jsp \"> <button>< VOLVER</button></a>");
+%>
 
 
 </body>
