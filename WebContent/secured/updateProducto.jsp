@@ -10,7 +10,7 @@
 <title>MODIFICAR</title>
 </head>
 <body>
-
+<%@ include file="cabecera.jsp"%>
 <%
 //Recuperamos del contexto la lista de los productos
 	Hashtable <String, Producto> productos = (Hashtable <String, Producto>)request.getServletContext().getAttribute("ATR_PRODUCTOS");

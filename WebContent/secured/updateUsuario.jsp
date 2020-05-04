@@ -10,6 +10,7 @@
 <title>MODIFICAR</title>
 </head>
 <body>
+<%@ include file="cabecera.jsp"%>
 <%
 //Recuperamos del contexto la lista de los usuarios
 	Hashtable <String, Usuario> usuarios = (Hashtable <String, Usuario>)request.getServletContext().getAttribute("ATR_USUARIOS");
