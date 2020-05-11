@@ -45,7 +45,8 @@
 				+"<th>[Eliminar]</th>"
 				+"<th>[  ID  ]</th>"
 				+"<th>[ Nombre ]</th>"
-				+"<th>[Modificar]</th></tr>");
+				+"<th>[Modificar]</th>"
+				+"<th>[Comentarios]</th></tr>");
 
 		for(Enumeration e = productos.elements(); e.hasMoreElements();){
 			producto = (Producto)e.nextElement();
@@ -54,7 +55,8 @@
 			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/Control?ACTION_ID=DELETEPRODUCTO&idProducto="+ producto.getIdProducto()+"\">X </a></td>"
 			+"<td align=\"CENTER\"> "+producto.getIdProducto()+" </td>"
 			+"<td align=\"CENTER\"> "+producto.getNombreProducto()+" </td>"
-			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/secured/updateProducto.jsp?nombreProducto="+producto.getNombreProducto()+"&idProducto="+producto.getIdProducto()+"\"> >> </a></td>"
+			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/secured/updateProducto.jsp?nombreProducto="+producto.getNombreProducto()+"&idProducto="+producto.getIdProducto()+"\"> <> </a></td>"
+			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/secured/comentariosProducto.jsp?idProducto="+producto.getIdProducto()+"\"> Listar</a></td>"
 			+"</tr>");	
 		}
 		out.println("</table>");
@@ -63,8 +65,7 @@
 	}
 %>
 	<br> 
-<%
-	out.println("<a href=\"" +request.getContextPath()+ "/secured/inicio.jsp \"> <button>< VOLVER</button></a>");
-%>
+<a href="<%=request.getContextPath()%>/secured/inicio.jsp">  <button>< VOLVER</button></a>
+
 </body>
 </html>
