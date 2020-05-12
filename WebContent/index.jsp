@@ -7,6 +7,7 @@
 <title>LOGIN</title>
 </head>
 <body>
+<center><h1>- · T I E N D A · -</h1></center><br>
 <% //Si recibimos un mensaje lo ponemos encima del formulario.
 if (request.getAttribute("MSG")!=null){
 	out.println(request.getAttribute("MSG")+"<br>");
@@ -14,7 +15,7 @@ if (request.getAttribute("MSG")!=null){
 %>
 <form action="<%=request.getContextPath()%>/ServletLogin" method="POST">
 	<fieldset>
-	<legend>Loguéate para acceder</legend>
+	<legend>Credenciales de acceso</legend>
 	<p>
 	<label for="nombre">Usuario</label><br>
 	<input type="text" name="nombre" id="nombre" value="admin"/>
