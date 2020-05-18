@@ -1,6 +1,7 @@
 <%@page import="java.util.Enumeration"%>
 <%@page import="java.util.Hashtable"%>
 <%@page import="edu.ucam.beans.Usuario"%>
+<%@ taglib uri="tagspractica" prefix="useradmin" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,6 +12,10 @@
 </head>
 <body>
 <%@ include file="cabecera.jsp"%>
+
+<!-- EIQUETA, si no Admin -> SKIP_BODY -->
+<useradmin:AdminLogged>
+
 <%
 //Recuperamos del contexto la lista de los usuarios
 	Hashtable <String, Usuario> usuarios = (Hashtable <String, Usuario>)request.getServletContext().getAttribute("ATR_USUARIOS");
@@ -65,10 +70,12 @@
 	</p>
 	</form>
 	
-<%} 
-	//VOLVER
-out.println("<a href=\"" +request.getContextPath()+ "/secured/usuarios.jsp \"><button>< VOLVER</button></a>");
-%>
+<%} %>
+
+</useradmin:AdminLogged>
+
+<br>
+<a href="<%=request.getContextPath()%>/secured/usuarios.jsp">  <button>< VOLVER</button></a>
 	
 </body>
 </html>

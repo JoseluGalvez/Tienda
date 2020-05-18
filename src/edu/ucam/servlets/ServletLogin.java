@@ -31,7 +31,8 @@ public class ServletLogin extends HttpServlet {
 			
 			// Si no ha introducido credenciales
 					if (idUsu=="" || pass=="") {
-						System.out.println("Complete los campos [Usuario] y [Contraseña]");
+						request.setAttribute("MSG", "Complete los campos [Usuario] y [Contraseña].");
+						//System.out.println("Complete los campos [Usuario] y [Contraseña].");
 					}else {
 						// Recupero usuarios.
 					    Hashtable<String, Usuario> usuarios= (Hashtable<String, Usuario>) getServletContext().getAttribute("ATR_USUARIOS");
@@ -42,11 +43,21 @@ public class ServletLogin extends HttpServlet {
 					    		Usuario user = usuarios.get(idUsu);
 					    		request.getSession().setAttribute(USER_LOGGED, user);
 					    		jsp = "/secured/inicio.jsp"; //jsp de respuesta Logueado
+					    		
+					    		//inicializo contadores de la etiqueta LOG
+					    		int contAddProducto=0, contDelProducto=0;
+					    		request.getSession().setAttribute("PROD_ADD", contAddProducto);
+					    		request.getSession().setAttribute("PROD_DEL", contDelProducto);
+
 					    	}else {
-					    		System.out.println("Contraseña del usuario <"+idUsu+"> incorrecta");
+					    		String mensaje = ("Contraseña del usuario <" + idUsu + "> incorrecta.");
+					    		request.setAttribute("MSG", mensaje);
+					    		//System.out.println("Contraseña del usuario <"+idUsu+"> incorrecta");
 					    	}
 					    }else {
-					    	System.out.println("Usuario <"+idUsu+"> no encontrado.");
+					    	String mensaje = ("Usuario <" + idUsu + "> no encontrado.");
+					    	request.setAttribute("MSG", mensaje);
+					    	//System.out.println("Usuario <"+idUsu+"> no encontrado.");
 					    }
 					}
 				request.getRequestDispatcher(jsp).forward(request, response);		
@@ -59,6 +70,12 @@ public class ServletLogin extends HttpServlet {
 
 		@Override
 		public void init() throws ServletException {
+			// Inicializo contador de productos y guardo en contexto para 
+			// que sean accesible desde todas las conexiones de usuarios.
+			// Lo puedo utilizar para generar la ID del producto.
+			int contProductos = 01;
+			getServletContext().setAttribute("ATR_CONTPROD", contProductos);
+			
 			//Creamos el primer usuario Administrador para poder acceder
 					String idUsu = "admin";
 

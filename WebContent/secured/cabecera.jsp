@@ -14,7 +14,7 @@
 	//Intentamos recuperar el usuario que ha iniciado sesión.
 	Usuario user = (Usuario) session.getAttribute("USER_LOGGED");
 	if (user!=null){
-	out.println("<h5 align=\"RIGHT\">Conectado como:  "+user.getIdUsu()+" <a href=\""+request.getContextPath()+"/Control?ACTION_ID=EXIT\"> Salir</a></h5><hr>");
+	out.println("<h5 align=\"RIGHT\">Conectado como  "+user.getIdUsu()+".  <a href=\""+request.getContextPath()+"/Control?ACTION_ID=EXIT\"> Salir</a></h5><hr>");
 	}
 	//Si recibimos un mensaje lo ponemos debajo de la cabecera, encima del formulario.
 	if (request.getAttribute("MSG")!=null){

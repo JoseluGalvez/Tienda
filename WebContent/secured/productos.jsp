@@ -4,6 +4,7 @@
 <%@ page import="java.util.Hashtable"%>
 <%@ page import="edu.ucam.beans.Producto"%>
 <%@ page import="edu.ucam.beans.Usuario"%>
+<%@ taglib uri="tagspractica" prefix="logcont" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -55,7 +56,7 @@
 			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/Control?ACTION_ID=DELETEPRODUCTO&idProducto="+ producto.getIdProducto()+"\">X </a></td>"
 			+"<td align=\"CENTER\"> "+producto.getIdProducto()+" </td>"
 			+"<td align=\"CENTER\"> "+producto.getNombreProducto()+" </td>"
-			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/secured/updateProducto.jsp?nombreProducto="+producto.getNombreProducto()+"&idProducto="+producto.getIdProducto()+"\"> <> </a></td>"
+			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/secured/updateProducto.jsp?idProducto="+producto.getIdProducto()+"\"> <> </a></td>"
 			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/secured/comentariosProducto.jsp?idProducto="+producto.getIdProducto()+"\"> Listar</a></td>"
 			+"</tr>");	
 		}
@@ -64,7 +65,11 @@
 		out.println("   - = No hay productos. = -");
 	}
 %>
-	<br> 
+<br>   <!-- ETIQUETA que contabiliza las inserciones y eliminación de productos en esta sesion -->
+
+<logcont:LogProductos/>
+
+<br> 
 <a href="<%=request.getContextPath()%>/secured/inicio.jsp">  <button>< VOLVER</button></a>
 
 </body>

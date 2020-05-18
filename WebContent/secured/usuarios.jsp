@@ -1,6 +1,7 @@
 <%@page import="java.util.Enumeration"%>
 <%@page import="java.util.Hashtable"%>
 <%@page import="edu.ucam.beans.Usuario"%>
+<%@ taglib uri="tagspractica" prefix="useradmin" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,6 +12,10 @@
 </head>
 <body>
 <%@ include file="cabecera.jsp"%>
+
+<!-- EIQUETA, si no Admin -> SKIP_BODY -->
+<useradmin:AdminLogged>
+
 	<form action="<%=request.getContextPath()%>/Control" method="POST">
 <!-- hidden para que no se vea el campo que contiene la acción -->
 	<input type="hidden" name="ACTION_ID" value="ADDUSUARIO"/>
@@ -66,7 +71,7 @@
 			+"<td align=\"CENTER\"> "+usuario.getName()+" </td>"
 			+"<td align=\"CENTER\"> "+usuario.getSurname()+" </td>"
 			+"<td align=\"CENTER\"> "+tipo+" </td>"
-			+"<td align=\"CENTER\"><a href=\""+request.getContextPath()+"/secured/updateUsuario.jsp?nombre="+usuario.getName()+"&pass="+ usuario.getPass()+"&idUsu="+ usuario.getIdUsu()+"\"> >> </a></td>"
+			+"<td align=\"CENTER\"><a href=\""+request.getContextPath()+"/secured/updateUsuario.jsp?idUsu="+ usuario.getIdUsu()+"\"> >> </a></td>"
 			+"</tr>");
 		}
 		out.println("</table>");
@@ -74,10 +79,10 @@
 		out.println("   - = No hay usuarios. = -");
 	}
 %>
-<br> 
-<%
-out.println("<a href=\"" +request.getContextPath()+ "/secured/inicio.jsp \"> <button>< VOLVER</button></a>");
-%>
+</useradmin:AdminLogged>
+
+<br>
+<a href="<%=request.getContextPath()%>/secured/inicio.jsp">  <button>< VOLVER</button></a>
 
 </body>
 </html>
