@@ -15,8 +15,8 @@ public class LogCrudProductosTag extends TagSupport {
 		Hashtable <String, Producto> productos = (Hashtable <String, Producto>)this.pageContext.getServletContext().getAttribute("ATR_PRODUCTOS");
 		if (productos != null) {
 			try {
-				this.pageContext.getOut().println("Añadidos: "+this.pageContext.getSession().getAttribute("PROD_ADD")
-						+"<br>Eliminados: "+this.pageContext.getSession().getAttribute("PROD_DEL")
+				this.pageContext.getOut().println("Añadidos: "+this.pageContext.getSession().getAttribute("PRODUCTOS_ADD")
+						+"<br>Eliminados: "+this.pageContext.getSession().getAttribute("PRODUCTOS_DEL")
 						+"<br>Total de productos: "+ productos.size());
 			} catch (IOException e) {
 				e.printStackTrace();

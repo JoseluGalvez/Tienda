@@ -34,7 +34,7 @@ public class UpdateProductoAction extends Action {
 		}
 		// Añado a la lista el producto modificado con los parámetros recibidos (atributos)
 				productos.put(idProducto, producto);
-				//System.out.println("Producto ["+idProducto+"] modificado.");
+
 				request.setAttribute("MSG", "Producto ["+idProducto+"] modificado.");
 		return jsp;
 	}

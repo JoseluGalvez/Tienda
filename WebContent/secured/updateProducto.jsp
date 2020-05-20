@@ -17,7 +17,7 @@
 //Compruebo si existe
 	boolean exist=productos.containsKey(request.getParameter("idProducto"));
 	if(exist == false){
-		out.println("El producto que desea modificar no existe, puede que haya sido eliminado por otro usuario. <br><a href=\""+request.getContextPath()+"/principal.jsp \">  Volver</a><br>");
+		out.println("El producto que desea modificar no existe, puede que haya sido eliminado por otro usuario. <br>");
 	}else {
 //recupero el producto a modificar
 	Producto producto = productos.get(request.getParameter("idProducto"));
@@ -37,9 +37,10 @@
 	<input type="submit" value="~ MODIFICAR">
 	</p>
 	</form>
-<% //VOLVER
-out.println("<a href=\"" +request.getContextPath()+ "/secured/productos.jsp \"><button>< VOLVER</button></a>");
-}%>
+<% }%>
+
+//VOLVER
+<a href="<%=request.getContextPath()%>/secured/productos.jsp">  <button>< VOLVER</button></a>
 
 </body>
 </html>

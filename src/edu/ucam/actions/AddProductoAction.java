@@ -38,12 +38,16 @@ public class AddProductoAction extends Action {
 		
 		// Comprobamos si existe ese ID
 	    if(productos.containsKey(idProducto)) {
-	    	//System.out.println("Producto ["+idProducto+"] ya existe.");
+
 	    	request.setAttribute("MSG", "Producto ["+idProducto+"] ya existe, escriba otro diferente.");
 	    }else {
 		// Añado a la lista el producto creado con los parámetros recibidos (atributos)
 		productos.put(idProducto, producto);
-		//System.out.println("Producto ["+idProducto+"] añadido.");
+		
+		//Incremento cantidad de productos añadidos por el usuario en esta sesion
+		int contAddProducto = (int)request.getSession().getAttribute("PRODUCTOS_ADD");
+		request.getSession().setAttribute("PRODUCTOS_ADD", ++contAddProducto);
+
 		request.setAttribute("MSG", "Producto ["+idProducto+"] añadido.");
 	    }
 		

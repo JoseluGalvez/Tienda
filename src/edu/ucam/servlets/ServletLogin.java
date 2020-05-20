@@ -32,7 +32,7 @@ public class ServletLogin extends HttpServlet {
 			// Si no ha introducido credenciales
 					if (idUsu=="" || pass=="") {
 						request.setAttribute("MSG", "Complete los campos [Usuario] y [Contraseña].");
-						//System.out.println("Complete los campos [Usuario] y [Contraseña].");
+
 					}else {
 						// Recupero usuarios.
 					    Hashtable<String, Usuario> usuarios= (Hashtable<String, Usuario>) getServletContext().getAttribute("ATR_USUARIOS");
@@ -44,20 +44,19 @@ public class ServletLogin extends HttpServlet {
 					    		request.getSession().setAttribute(USER_LOGGED, user);
 					    		jsp = "/secured/inicio.jsp"; //jsp de respuesta Logueado
 					    		
-					    		//inicializo contadores de la etiqueta LOG
+					    		// inicializo contadores de la etiqueta LOG que llevan el 
+					    		// recuento de acciones en la sesion
 					    		int contAddProducto=0, contDelProducto=0;
-					    		request.getSession().setAttribute("PROD_ADD", contAddProducto);
-					    		request.getSession().setAttribute("PROD_DEL", contDelProducto);
+					    		request.getSession().setAttribute("PRODUCTOS_ADD", contAddProducto);
+					    		request.getSession().setAttribute("PRODUCTOS_DEL", contDelProducto);
 
 					    	}else {
 					    		String mensaje = ("Contraseña del usuario <" + idUsu + "> incorrecta.");
 					    		request.setAttribute("MSG", mensaje);
-					    		//System.out.println("Contraseña del usuario <"+idUsu+"> incorrecta");
 					    	}
 					    }else {
 					    	String mensaje = ("Usuario <" + idUsu + "> no encontrado.");
 					    	request.setAttribute("MSG", mensaje);
-					    	//System.out.println("Usuario <"+idUsu+"> no encontrado.");
 					    }
 					}
 				request.getRequestDispatcher(jsp).forward(request, response);		
@@ -65,28 +64,5 @@ public class ServletLogin extends HttpServlet {
 		
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			doGet(request, response);
-		}
-
-
-		@Override
-		public void init() throws ServletException {
-			// Inicializo contador de productos y guardo en contexto para 
-			// que sean accesible desde todas las conexiones de usuarios.
-			// Lo puedo utilizar para generar la ID del producto.
-			int contProductos = 01;
-			getServletContext().setAttribute("ATR_CONTPROD", contProductos);
-			
-			//Creamos el primer usuario Administrador para poder acceder
-					String idUsu = "admin";
-
-					Usuario admin = new Usuario (idUsu, "Jose Luis", "Gálvez", "admin", true);
-					Hashtable<String, Usuario> usuarios = new Hashtable<String, Usuario>();
-					
-				// Lista de usuarios iniciales
-				usuarios.put(idUsu, admin);
-				// La agrego al contexto para tenerla accesible por todos
-				getServletContext().setAttribute("ATR_USUARIOS", usuarios);	
-
-			super.init();
 		}
 	}

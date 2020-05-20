@@ -27,11 +27,14 @@ public class DeleteProductoAction extends Action {
 			// Comprobamos si existe ese ID
 		    if(productos.containsKey(idProducto)) {
 		    	if ((productos.get(idProducto)).getComentarios() != null) {
-					//System.out.println("El producto no se ha eliminado porque contiene comentarios");	
+
 					request.setAttribute("MSG", "El producto  ["+idProducto+"] no se ha eliminado porque contiene comentarios");
 				} else {
 					productos.remove(idProducto);
-					//System.out.println("Producto ["+idProducto+"] eliminado.");
+					
+					// Incremento cantidad de productos eliminados por el usuario en esta sesion
+					int contDelProducto = (int)request.getSession().getAttribute("PRODUCTOS_DEL");
+					request.getSession().setAttribute("PRODUCTOS_DEL", ++contDelProducto);
 					request.setAttribute("MSG", "Producto ["+idProducto+"] eliminado");
 				}
 		    }else {

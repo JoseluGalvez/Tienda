@@ -39,7 +39,7 @@ public class UpdateUsuarioAction extends Action {
 		
 		// Añado a la lista el usuario creado con los parámetros recibidos (atributos)
 		usuarios.put(idUsu, usuario);
-		//System.out.println("Usuario ["+idUsu+"] modificado.");
+
 		request.setAttribute("MSG", "Usuario ["+idUsu+"] modificado.");
 		return jsp;
 	}
