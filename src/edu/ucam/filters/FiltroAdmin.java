@@ -25,7 +25,7 @@ public class FiltroAdmin implements Filter {
 	
     public FiltroAdmin() {
 
-    	// Acciones de administrador
+    	// Acciones de administrador. Zona privada
     	accionesAdmin.put("ADDUSUARIO", "Para acceder a AddUsuarioAction");
     	accionesAdmin.put("DELETEUSUARIO", "Para acceder a DeleteUsuarioAction");
     	accionesAdmin.put("UPDATEUSUARIO", "Para acceder a UpdateUsuarioAction"); 
@@ -42,6 +42,7 @@ public class FiltroAdmin implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		System.out.println("FILTRO FiltroAdmin");
 		//Comprobamos si existe usuario "Logueado"
 				Usuario usuario = (Usuario)((HttpServletRequest) request).getSession().getAttribute(ServletLogin.USER_LOGGED);
 				//Cogemos el parámetro que llega para identificar la acción a realizar
@@ -51,12 +52,14 @@ public class FiltroAdmin implements Filter {
 					 if(accionesAdmin.containsKey(actionId)) {
 						 if(usuario.isAdmin()) {
 							 chain.doFilter(request, response);
+							 System.out.println("Acción para administrador, usuario administrador. Dejo pasar.");
 						 }else {
 							request.setAttribute("MSG", "Debe ser administrador");
 							request.getRequestDispatcher("/index.jsp").forward(request, response);
 						 }
 					 }else { // No es acción de Administrador
 						 chain.doFilter(request, response);
+						 System.out.println("No es acción para administrador. Dejo pasar.");
 					 }					
 				}else {
 					request.setAttribute("MSG", "Haga LOGIN para acceder");

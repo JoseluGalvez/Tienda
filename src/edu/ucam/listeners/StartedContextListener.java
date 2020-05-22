@@ -14,12 +14,12 @@ import edu.ucam.beans.Usuario;
  *
  */
 @WebListener
-public class StartedListener implements ServletContextListener{
+public class StartedContextListener implements ServletContextListener{
 
     /**
      * Default constructor. 
      */
-    public StartedListener() {
+    public StartedContextListener() {
         // TODO Auto-generated constructor stub
     }
 
@@ -40,10 +40,14 @@ public class StartedListener implements ServletContextListener{
 		int contProductos = 01;
 		arg0.getServletContext().setAttribute("ATR_CONTPROD", contProductos);
 		
+		int contComentarios = 01; //Inicializo el contador de comentarios para generar las ID
+		arg0.getServletContext().setAttribute("ATR_CONTCOMENT", contComentarios);
+
+		
 		//Creamos el primer usuario Administrador para poder acceder
 				String idUsu = "admin";
 
-				Usuario admin = new Usuario (idUsu, "Joselu", "Gálvez Morgado", "admin", true);
+				Usuario admin = new Usuario (idUsu, "Jose Luis", "Gálvez", "admin", true);
 				Hashtable<String, Usuario> usuarios = new Hashtable<String, Usuario>();
 				
 			// Lista de usuarios iniciales

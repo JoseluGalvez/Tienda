@@ -35,11 +35,11 @@
 	</fieldset>	
 	<p>
 	<input type="submit" value="~ MODIFICAR">
+	<input type="reset" value="LIMPIAR">
 	</p>
 	</form>
 <% }%>
 
-//VOLVER
 <a href="<%=request.getContextPath()%>/secured/productos.jsp">  <button>< VOLVER</button></a>
 
 </body>

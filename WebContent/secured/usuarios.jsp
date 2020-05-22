@@ -27,7 +27,7 @@
 		</p>
 		<p>
 		<label for="contrasena">*Contrasenna usuario nuevo: </label>
-		<input type="text" name="pass" id="pass" required/>
+		<input type="text" name="pass" id="contrasena" required/>
 		</p>
 		<p>
 		<label for="name">Nombre: </label>
@@ -38,13 +38,14 @@
 		<input type="text" name="surname" id="surname" value=""/>
 		</p>
 		<p>
-    	<input type="radio" name="tipo" value="normal" checked> Normal    
-    	<input type="radio" name="tipo" value="administrador"> Administrador
+    	<label></label><input type="radio" name="tipo" value="normal" checked> Normal</label>    
+    	<label></label><input type="radio" name="tipo" value="administrador"> Administrador</label>
   		</p>
 		<h6>Los campos marcados con * son obligatorios.</h6>
 		</fieldset>
 		<p>
 		<input type="submit" value="+ ANNADIR">
+		<input type="reset" value="LIMPIAR">
 		</p>
 	</form>
 

@@ -29,6 +29,7 @@
 	</fieldset>
 		<p>
 		<input type="submit" value="+ AÑADIR">
+		<input type="reset" value="LIMPIAR">
 		</p>
 	</form>
 
@@ -56,8 +57,8 @@
 			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/Control?ACTION_ID=DELETEPRODUCTO&idProducto="+ producto.getIdProducto()+"\">X </a></td>"
 			+"<td align=\"CENTER\"> "+producto.getIdProducto()+" </td>"
 			+"<td align=\"CENTER\"> "+producto.getNombreProducto()+" </td>"
-			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/secured/updateProducto.jsp?idProducto="+producto.getIdProducto()+"\"> <> </a></td>"
-			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/secured/comentariosProducto.jsp?idProducto="+producto.getIdProducto()+"\"> Listar</a></td>"
+			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/secured/updateProducto.jsp?idProducto="+producto.getIdProducto()+"\"> >> </a></td>"
+			+"<td align=\"CENTER\" ><a href=\""+request.getContextPath()+"/secured/comentariosProducto.jsp?idProducto="+producto.getIdProducto()+"\">Mostrar</a></td>"
 			+"</tr>");	
 		}
 		out.println("</table>");

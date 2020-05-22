@@ -13,6 +13,7 @@ public String execute(HttpServletRequest request, HttpServletResponse response)
 			//Para cerrar la sesión lo único que hacemos es quitar el objeto que utilizamos para verificar que existe.
 				request.getSession().removeAttribute("USER_LOGGED");
 				request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+				System.out.println("Deslogueado.");
 				return null;
 			}
 }

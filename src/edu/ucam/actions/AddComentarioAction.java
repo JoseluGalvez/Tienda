@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.ucam.beans.Comentario;
 import edu.ucam.beans.Producto;
+import edu.ucam.beans.Usuario;
+import edu.ucam.servlets.ServletLogin;
 
 public class AddComentarioAction extends Action {
 
@@ -19,17 +21,25 @@ public class AddComentarioAction extends Action {
 		System.out.println("Acción añadir AddComentarioAction...");
 		
 		//Compruebo que los campos no tengan NULL
-		String idComentario = (request.getParameter("idComentario")==null)?"":(request.getParameter("idComentario"));
+		//String idComentario = (request.getParameter("idComentario")==null)?"":(request.getParameter("idComentario"));
 		String textoComentario = (request.getParameter("textoComentario")==null)?"":(request.getParameter("textoComentario"));
-		String idProducto = (request.getParameter("producto")==null)?"":(request.getParameter("producto"));
+		String idProducto = (request.getParameter("idProducto")==null)?"":(request.getParameter("idProducto"));
 		
-		// IdVoto = IdComentario+IdUsu
+		// IdVoto = IdUsu *Un voto por mensaje y usuario.
 		Hashtable<String, Integer> votos = new Hashtable<String, Integer>() {
 			{ put("IdVoto", 0); 
 			}
 		};
+
+		Usuario usuario = (Usuario)((HttpServletRequest) request).getSession().getAttribute(ServletLogin.USER_LOGGED);
+		String autor = usuario.getIdUsu(); // ID usuario logueado que añade el comentario
 		
-		Comentario comentario = new Comentario(idComentario, textoComentario, votos);
+		int atrContComentarios =(int)request.getServletContext().getAttribute("ATR_ CONTCOMENT");
+		String idComentario = atrContComentarios +"_"+ autor; //Concateno contador de mensajes con id del usuario
+		request.getServletContext().setAttribute("ATR_ CONTCOMENT", ++atrContComentarios);
+		// Incremento el contador y lo guardo en el contexto actualizando ATR_CONTCOMENT
+		
+		Comentario comentario = new Comentario(idComentario, textoComentario, autor, votos);
 		
 		//Declaro la lista de comentarios con su "casting" correspondiente.
 		Hashtable <String, Comentario> comentarios = (Hashtable <String, Comentario>)request.getServletContext().getAttribute("ATR_COMENTARIOS");
@@ -47,12 +57,10 @@ public class AddComentarioAction extends Action {
 		
 		// Comprobamos si existe ese ID
 	    if(comentarios.containsKey(idComentario)) {
-	    	//System.out.println("Comentario ["+idProducto+"] ya existe.");
 	    	request.setAttribute("MSG", "Comentario ["+idComentario+"] ya existe, escriba otro diferente.");
 	    }else {
 		// Añado a la lista el comentario creado con los parámetros recibidos (atributos)
 	    	comentarios.put(idComentario, comentario);
-		//System.out.println("Comentario ["+idComentario+"] añadido.");
 		request.setAttribute("MSG", "Comentario ["+idComentario+"] añadido al producto ["+idProducto+"].");
 	    }
 		

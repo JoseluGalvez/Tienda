@@ -21,7 +21,7 @@ public class UpdateProductoAction extends Action {
 		String idProducto = (request.getParameter("idProducto")==null)?"":(request.getParameter("idProducto"));
 		String nombreProducto = (request.getParameter("nombreProducto")==null)?"":(request.getParameter("nombreProducto"));
 				
-		Producto producto = new Producto(idProducto, nombreProducto, null, 0);
+		Producto producto = new Producto(idProducto, nombreProducto, null);
 		
 		//Declaro la lista de productos con su "casting" correspondiente.
 		Hashtable <String, Producto> productos = (Hashtable <String, Producto>)request.getServletContext().getAttribute("ATR_PRODUCTOS");
