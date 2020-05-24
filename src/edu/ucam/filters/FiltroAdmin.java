@@ -28,7 +28,8 @@ public class FiltroAdmin implements Filter {
     	// Acciones de administrador. Zona privada
     	accionesAdmin.put("ADDUSUARIO", "Para acceder a AddUsuarioAction");
     	accionesAdmin.put("DELETEUSUARIO", "Para acceder a DeleteUsuarioAction");
-    	accionesAdmin.put("UPDATEUSUARIO", "Para acceder a UpdateUsuarioAction"); 
+    	accionesAdmin.put("UPDATEUSUARIO", "Para acceder a UpdateUsuarioAction");
+    	accionesAdmin.put("DELETECOMENTARIO", "Para acceder a DeleteComentarioAction");
     }
 
 	/**
@@ -50,16 +51,22 @@ public class FiltroAdmin implements Filter {
 				if (usuario != null && actionId != null) {
 					
 					 if(accionesAdmin.containsKey(actionId)) {
-						 if(usuario.isAdmin()) {
+						 if(usuario.isAdmin()) { //Acción para administrador, usuario administrador. Dejo pasar.
 							 chain.doFilter(request, response);
-							 System.out.println("Acción para administrador, usuario administrador. Dejo pasar.");
-						 }else {
+							 System.out.println("Usuario administrador, acción permitida.");
+						 }else { //Acción para administrador, usuario NO administrador. NO dejo pasar.
 							request.setAttribute("MSG", "Debe ser administrador");
-							request.getRequestDispatcher("/index.jsp").forward(request, response);
+							System.out.println("Acción sólo para administradores");
+							if(actionId.equals("DELETECOMENTARIO")) {
+								request.getRequestDispatcher("/secured/comentariosProducto.jsp").forward(request, response);
+							}else {
+								request.getRequestDispatcher("/index.jsp").forward(request, response);
+							}
+							
 						 }
-					 }else { // No es acción de Administrador
+					 }else { // No es acción para administrador. Dejo pasar.
 						 chain.doFilter(request, response);
-						 System.out.println("No es acción para administrador. Dejo pasar.");
+						 System.out.println("Acción permitida.");
 					 }					
 				}else {
 					request.setAttribute("MSG", "Haga LOGIN para acceder");

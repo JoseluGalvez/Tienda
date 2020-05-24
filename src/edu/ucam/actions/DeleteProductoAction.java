@@ -14,9 +14,6 @@ public class DeleteProductoAction extends Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String jsp ="/secured/productos.jsp";
-		//System.out.println("Acción eliminar DeleteProductoAction...");
-		
 		String idProducto = request.getParameter("idProducto");
 				
 		//Recupero la lista de productos con su "casting" correspondiente.
@@ -26,11 +23,12 @@ public class DeleteProductoAction extends Action {
 		
 			// Comprobamos si existe ese ID
 		    if(productos.containsKey(idProducto)) {
-		    	if ((productos.get(idProducto)).getComentarios() != null) {
-
+		    	//Compruebo si tiene comentarios
+		    	if ((productos.get(idProducto)).getComentarios() != null && ((productos.get(idProducto)).getComentarios()).size() > 0) {
 					request.setAttribute("MSG", "El producto  ["+idProducto+"] no se ha eliminado porque contiene comentarios");
 				} else {
-					productos.remove(idProducto);
+					productos.remove(idProducto); // Elimino
+					request.getServletContext().setAttribute("ATR_PRODUCTOS", productos); // Actualizo
 					
 					// Incremento cantidad de productos eliminados por el usuario en esta sesion
 					int contDelProducto = (int)request.getSession().getAttribute("PRODUCTOS_DEL");
@@ -41,6 +39,6 @@ public class DeleteProductoAction extends Action {
 			request.setAttribute("MSG", "Producto ["+idProducto+"] no encontrado");
 		    }
 		}
-		return jsp;
+		return "/secured/productos.jsp";
 	}
 }

@@ -37,11 +37,11 @@ public class StartedContextListener implements ServletContextListener{
 		// Inicializo contador de productos y guardo en contexto para 
 		// que sean accesible desde todas las conexiones de usuarios.
 		// Lo puedo utilizar para generar la ID del producto.
-		int contProductos = 01;
-		arg0.getServletContext().setAttribute("ATR_CONTPROD", contProductos);
+
+    	arg0.getServletContext().setAttribute("ATR_CONTPROD", 01);
 		
-		int contComentarios = 01; //Inicializo el contador de comentarios para generar las ID
-		arg0.getServletContext().setAttribute("ATR_CONTCOMENT", contComentarios);
+		//int contComentarios = 01; //Inicializo el contador de comentarios para generar las ID
+		arg0.getServletContext().setAttribute("ATR_CONTCOMENT", 01);
 
 		
 		//Creamos el primer usuario Administrador para poder acceder

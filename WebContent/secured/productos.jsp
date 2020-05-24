@@ -20,11 +20,11 @@
 		<legend> NUEVO PRODUCTO </legend>
 		<p>
 		<label for="idProducto">Identificador de producto: </label>
-		<input type="text" name="idProducto" id="idProducto" required/>
+		<input type="text" name="idProducto" id="idProducto"  required/>
 		</p>
 		<p>
 		<label for="nombreProducto">Nombre del producto: </label>
-		<input type="text" name="nombreProducto" id="nombreProducto" required/>
+		<input type="text" name="nombreProducto" id="nombreProducto"  required/>
 		</p>
 	</fieldset>
 		<p>
@@ -33,11 +33,7 @@
 		</p>
 	</form>
 
-	
-	
-
 <%
-//out.println("<br>");
 //Recuperamos del contexto todos los productos
 	Hashtable <String, Producto> productos = (Hashtable <String, Producto>)request.getServletContext().getAttribute("ATR_PRODUCTOS");
 
@@ -66,7 +62,8 @@
 		out.println("   - = No hay productos. = -");
 	}
 %>
-<br>   <!-- ETIQUETA que contabiliza las inserciones y eliminación de productos en esta sesion -->
+<br>   
+<!-- ETIQUETA que contabiliza las inserciones y eliminación de productos en esta sesion -->
 
 <logcont:LogProductos/>
 

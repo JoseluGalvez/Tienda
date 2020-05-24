@@ -26,11 +26,10 @@ public class DeleteUsuarioAction extends Action {
 			
 			// Comprobamos si existe ese ID
 		    if(usuarios.containsKey(idUsu)) {
-		    	usuarios.remove(idUsu);
-		    	//System.out.println("Usuario ["+idUsu+"] eliminado");
+		    	usuarios.remove(idUsu); // Elimino
+		    	request.getServletContext().setAttribute("ATR_USUARIOS", usuarios); // Actualizo
 		    	request.setAttribute("MSG", "Usuario ["+idUsu+"] eliminado");
 		    }else {
-		    	//System.out.println("Usuario ["+idUsu+"] no encontrado");
 		    	request.setAttribute("MSG", "Usuario ["+idUsu+"] no encontrado");
 		    }
 		}

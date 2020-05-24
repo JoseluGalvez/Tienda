@@ -25,12 +25,12 @@
 	<form action="<%=request.getContextPath()%>/Control" method="post">
 <!-- hidden para que no se vea el campo que contiene la acción -->
 	<input type="hidden" name="ACTION_ID" value="UPDATEPRODUCTO"/>
-	<input type="hidden" name="idProducto" value="<%= producto.getIdProducto() %>"/>
+	<input type="hidden" name="idProducto" value="<%=producto.getIdProducto()%>"/>
 	<fieldset>
-	<legend> MODIFICAR PRODUCTO <%= producto.getIdProducto() %> </legend>
+	<legend> MODIFICAR PRODUCTO <%=producto.getIdProducto()%> </legend>
 	<p>
 	<label for="nombreProducto">Nombre a modificar:</label><br>
-	<input type="text" name="nombreProducto" id="nombreProducto" value="<%= producto.getNombreProducto() %>"/>
+	<input type="text" name="nombreProducto" id="nombreProducto" value="<%=producto.getNombreProducto()%>"/>
 	</p>
 	</fieldset>	
 	<p>

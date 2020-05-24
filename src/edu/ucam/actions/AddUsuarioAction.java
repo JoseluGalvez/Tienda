@@ -38,12 +38,11 @@ public class AddUsuarioAction extends Action {
 		
 		// Comprobamos si existe ese ID
 	    if(usuarios.containsKey(idUsu)) {
-	    	//System.out.println("Nick en uso, escriba otro diferente.");
 	    	request.setAttribute("MSG", "Nick en uso, escriba otro diferente.");
 	    }else {
 			// Añado a la lista el usuario creado con los parámetros recibidos (atributos)
 			usuarios.put(idUsu, usuario);
-			//System.out.println("Usuario ["+idUsu+"] añadido.");
+			request.getServletContext().setAttribute("ATR_USUARIOS", usuarios); // Actualizo
 			request.setAttribute("MSG", "Usuario ["+idUsu+"] añadido.");
 	    }
 		return jsp;

@@ -38,8 +38,8 @@
 		<input type="text" name="surname" id="surname" value=""/>
 		</p>
 		<p>
-    	<label></label><input type="radio" name="tipo" value="normal" checked> Normal</label>    
-    	<label></label><input type="radio" name="tipo" value="administrador"> Administrador</label>
+    	<label><input type="radio" name="tipo" value="normal" checked> Normal</label>    
+    	<label><input type="radio" name="tipo" value="administrador"> Administrador</label>
   		</p>
 		<h6>Los campos marcados con * son obligatorios.</h6>
 		</fieldset>
